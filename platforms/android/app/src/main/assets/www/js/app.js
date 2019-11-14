@@ -888,13 +888,12 @@ document.addEventListener('init', function (event) {
         $("#back").click(function () {
 
             $("#content")[0].load("fastfood.html");
-            localStorage.clickcount = 0;
-
+           
         });
         $("#Backhome").click(function () {
 
             $("#content")[0].load("tabbar.html");
-            localStorage.clickcount = 0;
+          
 
         });
         firebase.auth().onAuthStateChanged(function (user) {
@@ -1063,8 +1062,20 @@ document.addEventListener('init', function (event) {
 
 
         $("#setAdd").click(function () {
-            ons.notification.alert("long"+selectedLng+"<br />lat"+selectedLat);
-                $("#content")[0].load("addressPage.html");
+            if (selectedLng!=null) {
+                ons.notification.alert("long"+selectedLng+"<br />lat"+selectedLat);
+                $("#content")[0].load("tabbar.html");
+            }else{
+                ons.notification.alert("Select location!");
+
+            }
+           
+        });
+        $("#back").click(function () {
+
+            $("#content")[0].load("tabbar.html");
+        
+
         });
     }
 
