@@ -1,0 +1,109 @@
+<ons-page id="tabbar" >
+
+    <ons-toolbar  style="background-color: yellow;">
+      <div class="left">
+        <!-- Toolbar-button with different icons depending on the platform. -->
+        <ons-toolbar-button component="button/menu" id="menubtn">
+          <ons-icon icon="ion-navicon, material:md-menu" size="32px, material:24px"></ons-icon>
+
+        </ons-toolbar-button>
+      </div>
+      <div class="center">FOODs</div>
+  <div class="right ">
+          <ons-toolbar-button >
+              <ons-icon icon="fa-user-circle" id="Backhome"></ons-icon>
+          </ons-toolbar-button>
+        </div>
+
+    </ons-toolbar>
+    <div class="background"></div>
+
+ 
+      <p style="text-align: center; margin-top: 10px; margin-bottom: 10px;">
+        <input type="search" value="" placeholder="Search" class="search-input" style="width: 280px;">
+        </p>
+
+
+    <div>
+        <div class="content" style="text-align: center;">
+          <div class="recomended">
+            <h4>Recomended</h4>
+            <ons-carousel auto-scroll auto-scroll-ratio="0.5" auto-refresh swipeable overscrollable item-width="130px"
+                class="recomended_list" id="carousel">
+                
+                
+            </ons-carousel>
+        </div>
+      </div>
+      <center>
+        <h3>Food Category</h3>
+      </center>
+  
+    <div class="main">
+      <div>
+        <ons-card class="set">
+            <div >
+            
+          <img src="image/1.png"
+            style="width:18%">
+         
+            </div>
+          <div class="col-10">
+            <p>Fast Food   </p>
+                <ons-button class="btn" id="btnFastfood">Fast Food</ons-button>
+            
+          </div>
+        </ons-card>
+      </div>
+      <div>
+        <ons-card class="set">
+            <div>
+          <img src="image/2.png"
+            style="width:18%">
+            </div>
+            <div class="col-10">
+              
+            <p>Kebabs Food</p>
+                <ons-button class="btn" id="btnKebabs">Kebabs</ons-button>
+           
+          </div>
+        </ons-card>
+      </div>
+    </div>
+      <div class="main">
+
+    <div>
+      <ons-card class="set">
+        <div>
+        <img src="image/3.png"
+          style="width:18%">
+        </div>
+        <div class="col-10">
+        <p>Thai Food </p>
+              <ons-button class="btn" id="btnThai">Thai Food </ons-button>
+            </div>
+            
+       
+      </ons-card>
+    </div>
+    <div>
+      <ons-card class="set">
+        <div >
+        <img src="image/4.png"
+          style="width:18%">
+        </div>
+        <div class="col-10">
+          <p>Pizza</p>
+              <ons-button class="btn" id="btnPizza">Pizza</ons-button>
+        
+        </div>
+      </ons-card>
+    </div>
+
+    </div>
+
+
+
+ 
+
+</ons-page>

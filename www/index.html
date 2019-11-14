@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Onsen</title>
+
+
+  <link rel="stylesheet" href="lib/onsen/css/onsenui.css">
+  <link rel="stylesheet" href="lib/onsen/css/onsen-css-components.css">
+  <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v1.5.0/mapbox-gl.css' rel='stylesheet' />
+  <link rel="stylesheet" href="css/index.css">
+
+  <!-- CODELAB: Add link rel manifest -->
+<link rel="manifest" href="/manifest.json">
+
+<script>
+  if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/service-worker.js')
+        .then((reg) => {
+          console.log('Service worker registered.', reg);
+        });
+  });
+}
+//Init cordova
+
+document.addEventListener("deviceready", onDeviceReady, false);
+    function onDeviceReady() {
+        console.log("navigator.geolocation works well");
+    }
+
+</script>
+</head>
+
+<body>
+
+  <!-- First navigation component: Navigator. This will remain always on top of the app. -->
+  <ons-navigator id="myNavigator" page="splitter.html">
+  </ons-navigator>
+
+  <!-- Second navigation component: Splitter. This will disappear if the first component changes its content. -->
+  <template id="splitter.html">
+    <ons-page>
+      <ons-splitter id="mySplitter">
+        <ons-splitter-side id="menu" page="menu.html" swipeable width="250px" collapse swipe-target-width="50px">
+        </ons-splitter-side>
+        <ons-splitter-content id="content" page="tabbar.html">
+        </ons-splitter-content>
+      </ons-splitter>
+    </ons-page>
+  </template>
+
+  <!-- //////////////////////////////////////////////////////////////////////////////
+  ////////////////////////////////////////////////////////////////////////// -->
+  <template id="login.html">
+    <ons-page id="login">
+
+      <ons-splitter class="contriner" style="background-color: yellow;">
+        <ons-card class="col set">
+
+          <img src="image/lufthansa-new-logo.jpg" style="width:80%">
+
+
+          <div>
+            <center>
+              <h2>Login </h2>
+            </center>
+          </div>
+          <div style="text-align: center;">
+
+
+            <p>
+              <ons-input id="user" placeholder="Username"></ons-input>
+            </p>
+            <p>
+              <ons-input id="pass" type="password" placeholder="Password"></ons-input>
+            </p>
+            <p style="margin-top: 40px; ">
+              <ons-button class="btn" id="btnLogin">Sign in</ons-button>
+
+              <ons-button class="btn" id="btnRegist">Regist</ons-button>
+            </p>
+            <button class="button--large--cta F"
+              style="width: 75%; margin-top:20px ;margin-left:25px ;">FACEBOOK</button>
+            <button id="btnGoogle" class="button--large--cta G"
+              style="width: 75%; margin-top:20px ; margin-left:26px ;">GOOGLE</button>
+            <div id="backhomebtn" style="margin-top: 20px;">
+              <ons-icon icon="fa-arrow-left"></ons-icon> Back to Homepage
+            </div>
+          </div>
+
+
+        </ons-card>
+      </ons-splitter>
+
+    </ons-page>
+
+
+  </template>
+
+
+  <!-- ///////////////////////////////////////////////////////////////////////////////////
+  ////////////////////////////////////////////////////////////////////////////////// -->
+  <template id="menu.html">
+    <ons-page id="sidemenu">
+      <ons-list-title id="header"></ons-list-title>
+      <ons-list id="links">
+        <ons-list-item id="homebtn" tappable>
+          Home
+        </ons-list-item>
+        <ons-list-item id="SignInbtn" tappable>
+          SignIn
+        </ons-list-item>
+        <ons-list-item id="logoutbtn" tappable>
+          Log out
+        </ons-list-item>
+        <ons-list-item id="addressbtn" tappable>
+           Address
+          </ons-list-item>
+      </ons-list>
+    </ons-page>
+  </template>
+
+
+
+  <!-- ///////////////////////////////////////////////////////////////////////////////////
+  ////////////////////////////////////////////////////////////////////////////////// -->
+  <template id="fastfood.html">
+    <ons-page id="fastfood">
+
+      
+
+        <ons-toolbar style="background-color: yellow;">
+          <div class="left"><i class="fas fa-angle-left icon" id="back"></i></div>
+          <div class="center" id="head"></div>
+          <div class="right ">
+            <ons-toolbar-button>
+              <ons-icon icon="fa-user-circle" id="Backhome"></ons-icon>
+            </ons-toolbar-button>
+          </div>
+        </ons-toolbar>
+
+        <div class="background"></div>
+        <div id="listFastfood" style="margin-top: 10px;">
+
+        </div>
+
+    </ons-page>
+
+  </template>
+
+
+  <!-- ///////////////////////////////////////////////////////////////////////////////////
+  ////////////////////////////////////////////////////////////////////////////////// -->
+  <template id="MenuKfc.html">
+    <ons-page id="Kfc">
+     
+
+        <ons-toolbar style="background-color: yellow;">
+          <div class="left"><i class="fas fa-angle-left icon" id="back"></i></div>
+          <div class="right ">
+            <ons-toolbar-button>
+              <ons-icon icon="fa-user-circle" id="Backhome"></ons-icon>
+            </ons-toolbar-button>
+          </div>
+        </ons-toolbar>
+        <div class="background"></div>
+        <ons-card style="margin-top: 10px;">
+          <div class="mainFood">
+            <div class="col-6" id="image">
+
+
+            </div>
+            <div class="col-6">
+
+            </div>
+          </div>
+          <div id="food"></div>
+
+        </ons-card>
+        <ons-card>
+          <div class="buttom">
+            <div class="col-2">
+              <p>Total : </p>
+            </div>
+            <div class="col-6">
+              <p id="total">0</p>
+            </div>
+            <div class="col-4">
+              <ons-button class="btn " id="order">สั่งซื้อ</ons-button>
+            </div>
+          </div>
+        </ons-card>
+     
+    </ons-page>
+
+  </template>
+
+
+
+  <!-- ///////////////////////////////////////////////////////////////////////////////////
+  ////////////////////////////////////////////////////////////////////////////////// -->
+  <template id="orderCf.html">
+
+    <ons-page id="orderCf">
+      
+
+        <ons-toolbar style="background-color: yellow;">
+          <div class="left"><i class="fas fa-angle-left icon" id="back"></i></div>
+          <div class="right ">
+            <ons-toolbar-button>
+              <ons-icon icon="fa-user-circle" id="Backhome"></ons-icon>
+            </ons-toolbar-button>
+          </div>
+        </ons-toolbar>
+        <div class="background"></div>
+        <ons-card style="margin-top: 10px;">
+          <div class="mainFood">
+            <div class="col-12">
+              <center>
+                <p id="logo"></p>
+                <h3>Your Order</h3>
+
+              </center>
+            </div>
+          </div>
+          <div class="Food ">
+
+          
+              <table style="width:100%">
+                <tr >
+                  <center>
+                 <th style="width:60%">รายการ</th>
+                 <th style="width:20%">จำนวน</th>
+                 <th style="width:20%">ราคา</th>
+                </center>
+                </tr>
+                <tr id="td" style="margin-top: 20px;"></tr>
+                <tr id="td1" style="margin-top: 20px;"></tr>
+                <tr id="td2" style="margin-top: 20px;"></tr>
+
+              </table>
+
+          </div>
+
+
+
+
+          <ons-button class="btnFood" style="margin-left: 120px; margin-top: 20px;" id="total"></ons-button>
+
+          <center>
+            <p>_____________________________</p>
+            <h3>Pay</h3>
+          </center>
+          <ons-button modifier="large" class="large" style="background-color: blue">Credit Card</ons-button>
+          <ons-button modifier="large" class="large" style="background-color: rgb(17, 15, 15)">Cash on Delivery
+          </ons-button>
+
+
+        </ons-card>
+
+        </section>
+
+     
+    </ons-page>
+  </template>
+
+
+
+  <script src="lib/onsen/js/onsenui.js"></script>
+  <script src="lib/jquery/jquery-3.4.1.min.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.1.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.1.0/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.1.0/firebase-auth.js"></script>
+
+  <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v1.5.0/mapbox-gl.js'></script>
+  <script src="cordova.js"></script>
+  <script src="js/app.js"></script>
+
+</body>
+
+</html>
